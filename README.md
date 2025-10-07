@@ -6,6 +6,15 @@ An AI Agent that takes input as a Redshift table and checks if table statistics 
 
 Data Engineers on-call often get overwhelmed with performance issues from downstream BI tools or ETL delays. This agent helps Data Engineers on-call to fasten troubleshooting when managing Redshift data warehouse incidents. By automating table statistics checks and optimization, the agent reduces the time spent diagnosing performance bottlenecks and enables faster resolution of data pipeline issues.
 
+### Natural Language Examples
+
+The agent accepts natural language queries such as:
+- "The sales_fact table is running slow, can you check if it needs optimization?"
+- "Our ETL job for customer_data is taking too long, check table statistics"
+- "Dashboard queries on product_inventory are timing out, analyze the table"
+- "Check if user_events table needs ANALYZE command"
+- "Performance issues with orders table, what's the stats_off value?"
+
 ## Architecture
 
 ![Architecture Diagram](resources/architecture.png)
