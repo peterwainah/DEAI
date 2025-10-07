@@ -1,4 +1,4 @@
-# Data Engineer On-Call Agent
+# Data Engineer On-Call AI Agent
 
 An AI Agent that takes input as a Redshift table and checks if table statistics are up to date. If not, it can run ANALYZE to update statistics.
 
