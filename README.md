@@ -2,34 +2,13 @@
 
 An AI Agent that takes input as a Redshift table and checks if table statistics are up to date. If not, it can run ANALYZE to update statistics.
 
+## Goal
+
+Data Engineers on-call often get overwhelmed with performance issues from downstream BI tools or ETL delays. This agent helps Data Engineers on-call to fasten troubleshooting when managing Redshift data warehouse incidents. By automating table statistics checks and optimization, the agent reduces the time spent diagnosing performance bottlenecks and enables faster resolution of data pipeline issues.
+
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        ☁️  AWS Cloud                            │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────────┐    ┌──────────────────────────────────┐   │
-│  │ 🤖 Bedrock Agent│    │          🏠 VPC                  │   │
-│  │   (Nova Lite)   │    │                                  │   │
-│  │                 │    │  ┌─────────────┐  ┌────────────┐ │   │
-│  │                 │────┼──│ λ Lambda    │  │ 📊 Redshift│ │   │
-│  │                 │    │  │  Function   │──│  Cluster   │ │   │
-│  └─────────────────┘    │  │             │  │            │ │   │
-│                         │  └─────────────┘  └────────────┘ │   │
-│                         │         │                       │   │
-│  ┌─────────────────┐    │         │        ┌────────────┐ │   │
-│  │ 🔐 Secrets Mgr  │────┼─────────┼────────│ 🌐 NAT GW  │ │   │
-│  │                 │    │         │        │            │ │   │
-│  └─────────────────┘    │         │        └────────────┘ │   │
-│                         │         │               │       │   │
-│                         │         └───────────────┼───────┘   │
-│                         │                         │           │
-│                         └─────────────────────────┼───────────┘
-│                                                   │
-│                                         🌍 Internet Gateway
-└─────────────────────────────────────────────────────────────────┘
-```
+![Architecture Diagram](resources/architecture.png)
 
 ### Network Flow:
 1. **Bedrock Agent** receives natural language queries
@@ -47,6 +26,8 @@ DEAI/
 │   ├── lambda_function.py      # Lambda function for table metadata checking
 │   ├── deploy.py              # Deployment script for all AWS resources
 │   └── update_action_group.py # Script to update action group parameters
+├── resources/
+│   └── architecture.png       # Architecture diagram
 ├── test_agent.py              # Test script for the deployed agent
 ├── requirements.txt           # Python dependencies
 └── README.md                 # This file

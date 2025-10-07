@@ -19,7 +19,7 @@ def get_agent_info():
     
     raise Exception(f"Agent '{agent_name}' not found")
 
-def test_agent(agent_id, agent_alias_id, query="Check table metadata for splittest table"):
+def test_agent(agent_id, agent_alias_id, query="Check table statistics for splittest table"):
     """Test the deployed agent"""
     session_id = str(uuid.uuid1())
     
