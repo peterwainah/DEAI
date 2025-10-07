@@ -83,7 +83,12 @@ def create_lambda_function(lambda_iam_role):
     """Create or update Lambda function"""
     s = BytesIO()
     z = zipfile.ZipFile(s, 'w')
-    z.write("src/lambda_function.py")
+    
+    # Get the current directory (src) and find lambda_function.py
+    current_dir = os.path.dirname(__file__)
+    lambda_file_path = os.path.join(current_dir, "lambda_function.py")
+    
+    z.write(lambda_file_path, "lambda_function.py")
     z.close()
     zip_content = s.getvalue()
 
