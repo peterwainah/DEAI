@@ -1,4 +1,4 @@
-from config import bedrock_agent_client, agent_name
+from src.config import bedrock_agent_client, agent_name
 
 def update_action_group():
     """Update existing action group with correct parameter type"""

@@ -42,12 +42,14 @@ An AI Agent that takes input as a Redshift table and checks if table statistics 
 
 ```
 DEAI/
-├── config.py              # Configuration and AWS client setup
-├── lambda_function.py      # Lambda function for table metadata checking
-├── deploy.py              # Deployment script for all AWS resources
-├── test_agent.py          # Test script for the deployed agent
-├── requirements.txt       # Python dependencies
-└── README.md             # This file
+├── src/
+│   ├── config.py              # Configuration and AWS client setup
+│   ├── lambda_function.py      # Lambda function for table metadata checking
+│   ├── deploy.py              # Deployment script for all AWS resources
+│   └── update_action_group.py # Script to update action group parameters
+├── test_agent.py              # Test script for the deployed agent
+├── requirements.txt           # Python dependencies
+└── README.md                 # This file
 ```
 
 ## Setup
@@ -64,7 +66,7 @@ DEAI/
 
 3. Deploy the agent:
    ```bash
-   python deploy.py
+   python src/deploy.py
    ```
 
 4. Test the agent:

@@ -4,6 +4,9 @@ import zipfile
 from io import BytesIO
 import uuid
 from botocore.exceptions import ClientError
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
 from config import *
 
 def create_lambda_role():
@@ -80,7 +83,7 @@ def create_lambda_function(lambda_iam_role):
     """Create or update Lambda function"""
     s = BytesIO()
     z = zipfile.ZipFile(s, 'w')
-    z.write("lambda_function.py")
+    z.write("src/lambda_function.py")
     z.close()
     zip_content = s.getvalue()
 

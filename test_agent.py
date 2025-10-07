@@ -1,6 +1,6 @@
 import uuid
 import json
-from config import bedrock_agent_runtime_client, bedrock_agent_client, agent_name, logger
+from src.config import bedrock_agent_runtime_client, bedrock_agent_client, agent_name, logger
 
 def get_agent_info():
     """Get agent ID and alias ID from existing deployment"""
